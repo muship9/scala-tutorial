@@ -80,3 +80,35 @@ object CovarianceTest extends App {
   // John2
 }
 ```
+
+### 反変
+
+`[-T]`
+
+まとめ中...
+
+## 型パラメータの境界 ( bounds )
+
+### 上限境界
+
+`<:`  
+型パラメーターがどのような型を継承しているかを指定する
+
+```scala
+abstract class Test {
+  def test: String
+}
+
+// 上限限界として Test が指定されているため a / b は test を呼びだせる
+class TestPair[A <: Test, B <: Test](val a: A, val b: B) extends Test {
+  override def show: String = "(" + a.test + "," + b.test + ")"
+}
+```
+
+### 下限境界
+
+`>:`  
+型パラメーターがどのようなスーパータイプであるかを指定する  
+-> どのサブクラスまで許可されるかを示す
+
+まとめ中...
