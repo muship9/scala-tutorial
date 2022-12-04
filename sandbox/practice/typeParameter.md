@@ -112,3 +112,17 @@ class TestPair[A <: Test, B <: Test](val a: A, val b: B) extends Test {
 -> どのサブクラスまで許可されるかを示す
 
 まとめ中...
+
+```scala
+trait Node[+B] {
+  // 関数は引数の型パラメーターに対して反変であり、戻り値の型パラメーターに対しては共変であるためコンパイルエラーになる
+  def prepend(elem: B): Node[B]
+}
+
+↓
+
+trait Node[+B] {
+  //  関数の引数の変位指定を逆転させるためにB型のスーパータイプであることを明示する
+  def prepend[U >: B](elem: U): Node[B]
+}
+```
